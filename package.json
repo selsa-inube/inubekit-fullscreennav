@@ -34,9 +34,6 @@
     "version": "rm -rf dist && npm run build",
     "postversion": "git push --follow-tags && npm run auto release"
   },
-  "dependencies": {
-    "@types/styled-components": "^5.1.34"
-  },
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
