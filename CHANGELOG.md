@@ -1,3 +1,28 @@
+# v0.0.2 (Wed Feb 14 2024)
+
+#### ⚠️ Pushed to `main`
+
+- feat: add FullscreenNav export and update vite.config.ts (carlos3k11@gmail.com)
+- feat(FullscreenNav): implementing the stories (carlos3k11@gmail.com)
+- feat: add FullscreenNav component (carlos3k11@gmail.com)
+- feat: add dependencies for @inubekit components (carlos3k11@gmail.com)
+- feat: add react-router-dom v6.22.0 and @remix-run/router v1.15.0 (carlos3k11@gmail.com)
+- feat: add declaration and allowJs options to tsconfig.json (carlos3k11@gmail.com)
+- feat: add styled-components module and remove @types/styled-components dependency (carlos3k11@gmail.com)
+- feat: pdate package.json dependencies (carlos3k11@gmail.com)
+- feat: add react-icons package (carlos3k11@gmail.com)
+- feat: disable telemetry and update documentation settings in Storybook configuration (carlos3k11@gmail.com)
+- feat: add dist/index.es.d.ts and vite-plugin-dts to package.json and vite.config.ts (carlos3k11@gmail.com)
+- feat: update package.json name to @inubekit/fullscreennav (carlos3k11@gmail.com)
+- Initial commit ([@JanuarAsprilla](https://github.com/JanuarAsprilla))
+
+#### Authors: 2
+
+- Andres Babativa (carlos3k11@gmail.com)
+- Januar Asprilla  ([@JanuarAsprilla](https://github.com/JanuarAsprilla))
+
+---
+
 # v0.0.1 (Wed Jan 17 2024)
 
 #### ⚠️ Pushed to `main`
