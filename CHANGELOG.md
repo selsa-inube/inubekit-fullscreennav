@@ -1,3 +1,20 @@
+# v1.0.1 (Thu Feb 15 2024)
+
+#### 🐛 Bug Fix
+
+- Adjust publish `FullscreenNav` inubekit repo [#1](https://github.com/selsa-inube/inubekit-fullscreennav/pull/1) ([@Andresbl123](https://github.com/Andresbl123))
+
+#### ⚠️ Pushed to `main`
+
+- feat: export the INavigation interface in the library (carlos3k11@gmail.com)
+
+#### Authors: 2
+
+- Andres ([@Andresbl123](https://github.com/Andresbl123))
+- Andres Babativa (carlos3k11@gmail.com)
+
+---
+
 # v0.0.2 (Wed Feb 14 2024)
 
 #### ⚠️ Pushed to `main`
