@@ -1,3 +1,7 @@
 export { FullscreenNav } from "./FullscreenNav";
-
-export type { INavigation } from "./FullscreenNav";
+export type {
+  IFullscreenNav,
+  IFullscreenNavIMenuSections,
+  IFullscreenNavINavigation,
+  IFullscreenNavISection,
+} from "./FullscreenNav";
