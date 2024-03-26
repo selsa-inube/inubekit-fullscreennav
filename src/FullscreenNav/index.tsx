@@ -44,8 +44,7 @@ interface IFullscreenNav {
   logoutTitle: string;
 }
 
-const MultiSections = (props: Pick<IFullscreenNav, "navigation">) => {
-  const { navigation } = props;
+const MultiSections = ({ navigation }: IFullscreenNav) => {
   const sections = Object.keys(navigation.sections);
 
   const [openSection, setOpenSection] = useState<string | null>(null);
@@ -171,7 +170,7 @@ const OneSection = ({ navigation }: IFullscreenNavIMenuSections) => {
 
 const sectionsComponents: {
   [key: number]: ({ navigation }: IFullscreenNavIMenuSections) => JSX.Element;
-  default: (props: Pick<IFullscreenNav, "navigation">) => JSX.Element;
+  default: (props: IFullscreenNav) => JSX.Element;
 } = {
   1: OneSection,
   2: TwoSections,
