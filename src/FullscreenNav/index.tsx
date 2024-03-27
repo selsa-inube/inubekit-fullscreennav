@@ -23,28 +23,28 @@ import {
   StyledFooter,
 } from "./styles";
 
-interface IFullscreenNavISection {
+interface IFNavSection {
   name: string;
   links: { [key: string]: INavLinkProps };
 }
 
-interface IFullscreenNavIMenuSections {
-  navigation: IFullscreenNavINavigation;
+interface IFNavSection {
+  navigation: IFNavigation;
 }
 
-interface IFullscreenNavINavigation {
+interface IFNavigation {
   title: string;
-  sections: { [key: string]: IFullscreenNavISection };
+  sections: { [key: string]: IFNavSection };
 }
 
-interface IFullscreenNav {
+interface IFNav {
   portalId: string;
-  navigation: IFullscreenNavINavigation;
+  navigation: IFNavigation;
   logoutPath: string;
   logoutTitle: string;
 }
 
-const MultiSections = ({ navigation }: IFullscreenNav) => {
+const MultiSections = ({ navigation }: IFNav) => {
   const sections = Object.keys(navigation.sections);
 
   const [openSection, setOpenSection] = useState<string | null>(null);
@@ -113,7 +113,7 @@ const MultiSections = ({ navigation }: IFullscreenNav) => {
   );
 };
 
-const TwoSections = ({ navigation }: IFullscreenNavIMenuSections) => {
+const TwoSections = ({ navigation }: IFNavSection) => {
   const navigationSectionValues = Object.values(navigation.sections);
 
   return (
@@ -150,7 +150,7 @@ const TwoSections = ({ navigation }: IFullscreenNavIMenuSections) => {
   );
 };
 
-const OneSection = ({ navigation }: IFullscreenNavIMenuSections) => {
+const OneSection = ({ navigation }: IFNavSection) => {
   const sectionValue = Object.values(navigation.sections)[0];
 
   return (
@@ -169,8 +169,8 @@ const OneSection = ({ navigation }: IFullscreenNavIMenuSections) => {
 };
 
 const sectionsComponents: {
-  [key: number]: ({ navigation }: IFullscreenNavIMenuSections) => JSX.Element;
-  default: (props: IFullscreenNav) => JSX.Element;
+  [key: number]: ({ navigation }: IFNavSection) => JSX.Element;
+  default: (props: IFNav) => JSX.Element;
 } = {
   1: OneSection,
   2: TwoSections,
@@ -178,7 +178,7 @@ const sectionsComponents: {
 };
 
 const FullscreenMenu = (
-  props: Omit<IFullscreenNav, "portalId"> & { onClose: () => void }
+  props: Omit<IFNav, "portalId"> & { onClose: () => void }
 ) => {
   const { navigation, logoutTitle, logoutPath, onClose } = props;
 
@@ -201,7 +201,7 @@ const FullscreenMenu = (
           cursorHover={true}
         />
       </Grid>
-      <SectionComponent navigation={navigation} />
+      <SectionComponent navigation={navigation} name={""} links={{}} />
       <StyledSeparatorLine />
       <NavLink
         id="logoutPath"
@@ -218,7 +218,7 @@ const FullscreenMenu = (
   );
 };
 
-const FullscreenNav = (props: IFullscreenNav) => {
+const FullscreenNav = (props: IFNav) => {
   const { portalId, navigation, logoutTitle, logoutPath } = props;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -255,9 +255,4 @@ const FullscreenNav = (props: IFullscreenNav) => {
   );
 };
 export { FullscreenNav };
-export type {
-  IFullscreenNav,
-  IFullscreenNavIMenuSections,
-  IFullscreenNavINavigation,
-  IFullscreenNavISection,
-};
+export type { IFNav, IFNavigation, IFNavSection };
