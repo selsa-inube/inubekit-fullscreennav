@@ -13,7 +13,7 @@ import {
   MdSecurityUpdateGood,
 } from "react-icons/md";
 
-import { FullscreenNav, IFullscreenNavProps } from "..";
+import { FullscreenNav, IFNav } from "..";
 
 import { props } from "../props";
 
@@ -30,9 +30,7 @@ const story = {
   ],
 };
 
-export const Multisections = (args: IFullscreenNavProps) => (
-  <FullscreenNav {...args} />
-);
+const Multisections = (args: IFNav) => <FullscreenNav {...args} />;
 
 Multisections.args = {
   portalId: "portals",
@@ -133,3 +131,4 @@ Multisections.args = {
 };
 
 export default story;
+export { Multisections };

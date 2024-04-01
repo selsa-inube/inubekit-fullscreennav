@@ -9,7 +9,7 @@ import {
   MdAccountBalance,
 } from "react-icons/md";
 
-import { FullscreenNav, IFullscreenNavProps } from "..";
+import { FullscreenNav, IFNav } from "..";
 
 import { props } from "../props";
 
@@ -26,9 +26,7 @@ const story = {
   ],
 };
 
-export const Default = (args: IFullscreenNavProps) => (
-  <FullscreenNav {...args} />
-);
+const Default = (args: IFNav) => <FullscreenNav {...args} />;
 
 Default.args = {
   portalId: "portals",
@@ -100,3 +98,4 @@ Default.args = {
 };
 
 export default story;
+export { Default };

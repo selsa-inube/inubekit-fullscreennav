@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { inube } from "@inubekit/foundations";
 
-export const StyledContDropMenu = styled.div`
+const StyledContDropMenu = styled.div`
   position: absolute;
   width: fit-content;
 `;
 
-export const StyledFullscreenNav = styled.nav`
+const StyledFullscreenNav = styled.nav`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -25,14 +25,14 @@ export const StyledFullscreenNav = styled.nav`
   -webkit-overflow-scrolling: touch;
 `;
 
-export const StyledSeparatorLine = styled.div`
+const StyledSeparatorLine = styled.div`
   width: calc(100% - 32px);
   margin: 16px 16px 16px;
   height: 1px;
   background-color: ${inube.color.stroke.divider.regular};
 `;
 
-export const StyledFooter = styled.footer`
+const StyledFooter = styled.footer`
   display: flex;
   height: 100%;
   flex-direction: column;
@@ -42,13 +42,13 @@ export const StyledFooter = styled.footer`
   gap: 24px;
 `;
 
-export const StyledDetails = styled.details`
+const StyledDetails = styled.details`
   width: 100%;
   margin: ${inube.spacing.s0} ${inube.spacing.s300};
   list-style: none;
 `;
 
-export const StyledSummary = styled.summary`
+const StyledSummary = styled.summary`
   display: flex;
   height: 48px;
   align-items: center;
@@ -58,3 +58,11 @@ export const StyledSummary = styled.summary`
     background-color: ${inube.color.surface.navLink.hover};
   }
 `;
+export {
+  StyledContDropMenu,
+  StyledFullscreenNav,
+  StyledSeparatorLine,
+  StyledFooter,
+  StyledDetails,
+  StyledSummary,
+};

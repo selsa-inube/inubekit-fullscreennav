@@ -10,7 +10,7 @@ import {
   MdAccountBalanceWallet,
 } from "react-icons/md";
 
-import { FullscreenNav, IFullscreenNavProps } from "..";
+import { FullscreenNav, IFNav } from "..";
 import { props } from "../props";
 
 const story = {
@@ -26,9 +26,7 @@ const story = {
   ],
 };
 
-export const WithoutSections = (args: IFullscreenNavProps) => (
-  <FullscreenNav {...args} />
-);
+const WithoutSections = (args: IFNav) => <FullscreenNav {...args} />;
 
 WithoutSections.args = {
   portalId: "portals",
@@ -89,3 +87,4 @@ WithoutSections.args = {
 };
 
 export default story;
+export { WithoutSections };
