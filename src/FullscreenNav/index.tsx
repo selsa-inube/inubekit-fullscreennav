@@ -28,7 +28,7 @@ interface IFNavSection {
   links: { [key: string]: INavLinkProps };
 }
 
-interface IFNavSection {
+interface IFNavMenuSection {
   navigation: IFNavigation;
 }
 
@@ -113,7 +113,7 @@ const MultiSections = ({ navigation }: IFNav) => {
   );
 };
 
-const TwoSections = ({ navigation }: IFNavSection) => {
+const TwoSections = ({ navigation }: IFNavMenuSection) => {
   const navigationSectionValues = Object.values(navigation.sections);
 
   return (
@@ -150,7 +150,7 @@ const TwoSections = ({ navigation }: IFNavSection) => {
   );
 };
 
-const OneSection = ({ navigation }: IFNavSection) => {
+const OneSection = ({ navigation }: IFNavMenuSection) => {
   const sectionValue = Object.values(navigation.sections)[0];
 
   return (
@@ -169,7 +169,7 @@ const OneSection = ({ navigation }: IFNavSection) => {
 };
 
 const sectionsComponents: {
-  [key: number]: ({ navigation }: IFNavSection) => JSX.Element;
+  [key: number]: ({ navigation }: IFNavMenuSection) => JSX.Element;
   default: (props: IFNav) => JSX.Element;
 } = {
   1: OneSection,
@@ -201,7 +201,7 @@ const FullscreenMenu = (
           cursorHover={true}
         />
       </Grid>
-      <SectionComponent navigation={navigation} name={""} links={{}} />
+      <SectionComponent navigation={navigation} />
       <StyledSeparatorLine />
       <NavLink
         id="logoutPath"
@@ -255,4 +255,4 @@ const FullscreenNav = (props: IFNav) => {
   );
 };
 export { FullscreenNav };
-export type { IFNav, IFNavigation, IFNavSection };
+export type { IFNav, IFNavigation, IFNavSection, IFNavMenuSection };
