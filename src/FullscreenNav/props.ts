@@ -1,4 +1,4 @@
-export const props = {
+const props = {
   parameters: {
     docs: {
       description: {
@@ -18,3 +18,5 @@ export const props = {
     description: "path to the logout page",
   },
 };
+
+export { props };

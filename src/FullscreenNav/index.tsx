@@ -23,29 +23,28 @@ import {
   StyledFooter,
 } from "./styles";
 
-export interface ISection {
+interface IFNavSection {
   name: string;
   links: { [key: string]: INavLinkProps };
 }
 
-export interface IMenuSectionsProps {
-  navigation: INavigation;
+interface IFNavMenuSection {
+  navigation: IFNavigation;
 }
 
-export interface INavigation {
+interface IFNavigation {
   title: string;
-  sections: { [key: string]: ISection };
+  sections: { [key: string]: IFNavSection };
 }
 
-export interface IFullscreenNavProps {
+interface IFNav {
   portalId: string;
-  navigation: INavigation;
+  navigation: IFNavigation;
   logoutPath: string;
   logoutTitle: string;
 }
 
-const MultiSections = (props: Pick<IFullscreenNavProps, "navigation">) => {
-  const { navigation } = props;
+const MultiSections = ({ navigation }: IFNav) => {
   const sections = Object.keys(navigation.sections);
 
   const [openSection, setOpenSection] = useState<string | null>(null);
@@ -104,7 +103,7 @@ const MultiSections = (props: Pick<IFullscreenNavProps, "navigation">) => {
                     path={linkValue.path}
                     onClick={(e: PointerEvent) => e.stopPropagation()}
                   />
-                ),
+                )
               )}
             </Stack>
           </StyledDetails>
@@ -114,7 +113,7 @@ const MultiSections = (props: Pick<IFullscreenNavProps, "navigation">) => {
   );
 };
 
-const TwoSections = ({ navigation }: IMenuSectionsProps) => {
+const TwoSections = ({ navigation }: IFNavMenuSection) => {
   const navigationSectionValues = Object.values(navigation.sections);
 
   return (
@@ -151,7 +150,7 @@ const TwoSections = ({ navigation }: IMenuSectionsProps) => {
   );
 };
 
-const OneSection = ({ navigation }: IMenuSectionsProps) => {
+const OneSection = ({ navigation }: IFNavMenuSection) => {
   const sectionValue = Object.values(navigation.sections)[0];
 
   return (
@@ -170,16 +169,16 @@ const OneSection = ({ navigation }: IMenuSectionsProps) => {
 };
 
 const sectionsComponents: {
-  [key: number]: ({ navigation }: IMenuSectionsProps) => JSX.Element;
-  default: (props: Pick<IFullscreenNavProps, "navigation">) => JSX.Element;
+  [key: number]: ({ navigation }: IFNavMenuSection) => JSX.Element;
+  default: (props: IFNav) => JSX.Element;
 } = {
   1: OneSection,
   2: TwoSections,
   default: MultiSections,
 };
 
-export const FullscreenMenu = (
-  props: Omit<IFullscreenNavProps, "portalId"> & { onClose: () => void },
+const FullscreenMenu = (
+  props: Omit<IFNav, "portalId"> & { onClose: () => void }
 ) => {
   const { navigation, logoutTitle, logoutPath, onClose } = props;
 
@@ -219,7 +218,7 @@ export const FullscreenMenu = (
   );
 };
 
-export const FullscreenNav = (props: IFullscreenNavProps) => {
+const FullscreenNav = (props: IFNav) => {
   const { portalId, navigation, logoutTitle, logoutPath } = props;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -227,7 +226,7 @@ export const FullscreenNav = (props: IFullscreenNavProps) => {
 
   if (node === null) {
     throw new Error(
-      "The portal node is not defined. This can occur when the specific node used to render the portal has not been defined correctly.",
+      "The portal node is not defined. This can occur when the specific node used to render the portal has not been defined correctly."
     );
   }
 
@@ -250,8 +249,10 @@ export const FullscreenNav = (props: IFullscreenNavProps) => {
             logoutTitle={logoutTitle}
             onClose={() => setIsMenuOpen(false)}
           />,
-          node,
+          node
         )}
     </>
   );
 };
+export { FullscreenNav };
+export type { IFNav, IFNavigation, IFNavSection, IFNavMenuSection };
