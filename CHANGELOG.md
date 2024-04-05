@@ -1,3 +1,27 @@
+# v1.1.0 (Fri Apr 05 2024)
+
+#### 🚀 Enhancement
+
+- Adjust and export interfaces [#5](https://github.com/selsa-inube/inubekit-fullscreennav/pull/5) ([@JanuarAsprilla](https://github.com/JanuarAsprilla))
+
+#### 🐛 Bug Fix
+
+- Add auto publish [#6](https://github.com/selsa-inube/inubekit-fullscreennav/pull/6) ([@cmarin001](https://github.com/cmarin001))
+- Adjust the `<FullscreenNav/>` component to manage its dependencies, thus avoiding installation errors. [#3](https://github.com/selsa-inube/inubekit-fullscreennav/pull/3) ([@JanuarAsprilla](https://github.com/JanuarAsprilla))
+- Export `INavigation` interface in NPM [#2](https://github.com/selsa-inube/inubekit-fullscreennav/pull/2) ([@Andresbl123](https://github.com/Andresbl123))
+
+#### 🔩 Dependency Updates
+
+- Update inubekit/fullscreennav to storybook v8 [#4](https://github.com/selsa-inube/inubekit-fullscreennav/pull/4) ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 3
+
+- Andres ([@Andresbl123](https://github.com/Andresbl123))
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+- Januar Asprilla  ([@JanuarAsprilla](https://github.com/JanuarAsprilla))
+
+---
+
 # v1.0.1 (Thu Feb 15 2024)
 
 #### 🐛 Bug Fix
