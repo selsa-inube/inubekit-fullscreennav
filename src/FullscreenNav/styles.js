@@ -17,7 +17,9 @@ const StyledFullscreenNav = styled.nav`
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: ${inube.color.surface.nav.regular};
+  background-color: ${({ theme }) =>
+    theme?.fullscreenNav?.background?.color ||
+    inube.fullscreenNav.background.color};
   padding: 0px 16px;
   z-index: 2;
   overflow-y: auto;
@@ -29,7 +31,8 @@ const StyledSeparatorLine = styled.div`
   width: calc(100% - 32px);
   margin: 16px 16px 16px;
   height: 1px;
-  background-color: ${inube.color.stroke.divider.regular};
+  background-color: ${({ theme }) =>
+    theme?.fullscreenNav?.divider?.color || inube.fullscreenNav.divider.color};
 `;
 
 const StyledFooter = styled.footer`
@@ -44,7 +47,7 @@ const StyledFooter = styled.footer`
 
 const StyledDetails = styled.details`
   width: 100%;
-  margin: ${inube.spacing.s0} ${inube.spacing.s300};
+  margin: 0 24px;
   list-style: none;
 `;
 
@@ -55,7 +58,9 @@ const StyledSummary = styled.summary`
   justify-content: space-between;
   &:hover {
     cursor: pointer;
-    background-color: ${inube.color.surface.navLink.hover};
+    background-color: ${({ theme }) =>
+      theme?.fullscreenNav?.background?.color ||
+      inube.fullscreenNav.background.color};
   }
 `;
 export {
