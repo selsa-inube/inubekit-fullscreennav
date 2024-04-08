@@ -8,12 +8,14 @@ import {
   MdOutlineArrowDropUp,
 } from "react-icons/md";
 
-import { Icon } from "@inubekit/icon";
-import { Text } from "@inubekit/text";
+import { Icon, IIconAppearance } from "@inubekit/icon";
+import { ITextAppearance, Text } from "@inubekit/text";
 import { Grid } from "@inubekit/grid";
 import { Stack } from "@inubekit/stack";
-import { NavLink, INavLinkProps } from "@inubekit/navlink";
-
+import { NavLink, INavLink } from "@inubekit/nav";
+import { useContext } from "react";
+import { ThemeContext } from "styled-components";
+import { inube } from "@inubekit/foundations";
 import {
   StyledContDropMenu,
   StyledFullscreenNav,
@@ -25,7 +27,7 @@ import {
 
 interface IFNavSection {
   name: string;
-  links: { [key: string]: INavLinkProps };
+  links: { [key: string]: INavLink };
 }
 
 interface IFNavMenuSection {
@@ -46,7 +48,13 @@ interface IFNav {
 
 const MultiSections = ({ navigation }: IFNav) => {
   const sections = Object.keys(navigation.sections);
-
+  const theme: typeof inube = useContext(ThemeContext);
+  const selectedNavLinkAppearance =
+    (theme?.fullscreenNav?.link?.appearance?.selected as IIconAppearance) ||
+    inube.fullscreenNav.link.appearance.selected;
+  const regularNavLinkAppearance =
+    (theme?.fullscreenNav?.link?.appearance?.regular as IIconAppearance) ||
+    inube.fullscreenNav.link.appearance.regular;
   const [openSection, setOpenSection] = useState<string | null>(null);
 
   const toggleSection = (section: string) => {
@@ -74,13 +82,17 @@ const MultiSections = ({ navigation }: IFNav) => {
                 margin="0px 16px"
                 type="title"
                 size="small"
-                appearance={section === openSection ? "primary" : "gray"}
+                appearance={
+                  section === openSection
+                    ? selectedNavLinkAppearance
+                    : regularNavLinkAppearance
+                }
               >
                 {section.toUpperCase()}
               </Text>
               <span>
                 <Icon
-                  appearance="dark"
+                  appearance={regularNavLinkAppearance}
                   icon={
                     section === openSection ? (
                       <MdOutlineArrowDropUp />
@@ -103,7 +115,7 @@ const MultiSections = ({ navigation }: IFNav) => {
                     path={linkValue.path}
                     onClick={(e: PointerEvent) => e.stopPropagation()}
                   />
-                )
+                ),
               )}
             </Stack>
           </StyledDetails>
@@ -115,20 +127,19 @@ const MultiSections = ({ navigation }: IFNav) => {
 
 const TwoSections = ({ navigation }: IFNavMenuSection) => {
   const navigationSectionValues = Object.values(navigation.sections);
-
+  const theme: typeof inube = useContext(ThemeContext);
+  const titleAppearance =
+    (theme?.fullscreenNav?.title?.appearance as ITextAppearance) ||
+    inube.fullscreenNav.title.appearance;
   return (
     <Stack direction="column">
       {navigationSectionValues.map((sectionValue) => (
-        <Stack
-          key={sectionValue.name}
-          direction="column"
-          margin="s0 s0 s300 s0"
-        >
+        <Stack key={sectionValue.name} direction="column" margin="0 0 24px 0">
           <Text
             as="h2"
             type="title"
             size="small"
-            appearance="gray"
+            appearance={titleAppearance}
             padding="16px"
           >
             {sectionValue.name}
@@ -178,23 +189,35 @@ const sectionsComponents: {
 };
 
 const FullscreenMenu = (
-  props: Omit<IFNav, "portalId"> & { onClose: () => void }
+  props: Omit<IFNav, "portalId"> & { onClose: () => void },
 ) => {
   const { navigation, logoutTitle, logoutPath, onClose } = props;
-
+  const theme: typeof inube = useContext(ThemeContext);
+  const titleFullscreenNavAppearance =
+    (theme?.fullscreenNav?.title?.appearance as ITextAppearance) ||
+    inube.fullscreenNav.title.appearance;
+  const fullscreenNavCopyrightAppearance =
+    (theme?.fullscreenNav?.copyright?.appearance as ITextAppearance) ||
+    inube.fullscreenNav.copyright.appearance;
+  const fullscreenNavCloseIconAppearance =
+    (theme?.fullscreenNav?.burger?.appearance as IIconAppearance) ||
+    inube.fullscreenNav.burger.appearance;
   const sections = Object.keys(navigation.sections);
-
   const SectionComponent =
     sectionsComponents[sections.length] || sectionsComponents.default;
 
   return (
     <StyledFullscreenNav>
-      <Grid templateColumns="1fr auto" padding="s400 s300 s200 s200">
-        <Text type="title" size="small" appearance="gray">
+      <Grid templateColumns="1fr auto" padding="32px 24px 16px 16px">
+        <Text
+          type="title"
+          size="small"
+          appearance={titleFullscreenNavAppearance}
+        >
           {navigation.title}
         </Text>
         <Icon
-          appearance="dark"
+          appearance={fullscreenNavCloseIconAppearance}
           icon={<MdClose />}
           onClick={() => onClose()}
           size="24px"
@@ -210,7 +233,11 @@ const FullscreenMenu = (
         path={logoutPath}
       />
       <StyledFooter>
-        <Text type="label" size="medium" appearance="gray">
+        <Text
+          type="label"
+          size="medium"
+          appearance={fullscreenNavCopyrightAppearance}
+        >
           ©2023 - Inube
         </Text>
       </StyledFooter>
@@ -221,12 +248,15 @@ const FullscreenMenu = (
 const FullscreenNav = (props: IFNav) => {
   const { portalId, navigation, logoutTitle, logoutPath } = props;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const theme: typeof inube = useContext(ThemeContext);
+  const fullscreenNavBurgerIconAppearance =
+    (theme?.fullscreenNav?.burger?.appearance as IIconAppearance) ||
+    inube.fullscreenNav.burger.appearance;
   const node = document.getElementById(portalId);
 
   if (node === null) {
     throw new Error(
-      "The portal node is not defined. This can occur when the specific node used to render the portal has not been defined correctly."
+      "The portal node is not defined. This can occur when the specific node used to render the portal has not been defined correctly.",
     );
   }
 
@@ -234,7 +264,7 @@ const FullscreenNav = (props: IFNav) => {
     <>
       <StyledContDropMenu>
         <Icon
-          appearance="dark"
+          appearance={fullscreenNavBurgerIconAppearance}
           icon={<MdMenu />}
           onClick={() => setIsMenuOpen(true)}
           size="24px"
@@ -249,7 +279,7 @@ const FullscreenNav = (props: IFNav) => {
             logoutTitle={logoutTitle}
             onClose={() => setIsMenuOpen(false)}
           />,
-          node
+          node,
         )}
     </>
   );
