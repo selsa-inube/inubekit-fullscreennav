@@ -1,3 +1,15 @@
+# v2.0.0 (Mon Apr 08 2024)
+
+#### 💥 Breaking Change
+
+- Refactor component to use new token structure [#7](https://github.com/selsa-inube/inubekit-fullscreennav/pull/7) ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v1.1.0 (Fri Apr 05 2024)
 
 #### 🚀 Enhancement
