@@ -1,3 +1,15 @@
+# v2.2.0 (Fri Jun 28 2024)
+
+#### 🚀 Enhancement
+
+- Update Project Dependencies [#9](https://github.com/selsa-inube/inubekit-fullscreennav/pull/9) ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v2.1.0 (Tue Apr 30 2024)
 
 #### 🚀 Enhancement
