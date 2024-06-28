@@ -40,12 +40,12 @@
     "access": "public"
   },
   "dependencies": {
-    "@inubekit/grid": "1.0.0",
-    "@inubekit/icon": "^1.1.1",
-    "@inubekit/nav": "^3.0.0",
-    "@inubekit/stack": "^2.1.1",
-    "@inubekit/text": "^2.2.1",
-    "@inubekit/foundations": "^2.12.1"
+    "@inubekit/foundations": "^5.0.0",
+    "@inubekit/grid": "2.2.0",
+    "@inubekit/icon": "^1.8.0",
+    "@inubekit/nav": "^4.4.0",
+    "@inubekit/stack": "^2.3.0",
+    "@inubekit/text": "^2.4.0"
   },
   "peerDependencies": {
     "react": "^18.2.0",
