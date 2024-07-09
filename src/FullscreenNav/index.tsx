@@ -87,6 +87,7 @@ const MultiSections = ({ navigation }: IFNav) => {
                     ? selectedNavLinkAppearance
                     : regularNavLinkAppearance
                 }
+                weight="bold"
               >
                 {section.toUpperCase()}
               </Text>
@@ -141,6 +142,7 @@ const TwoSections = ({ navigation }: IFNavMenuSection) => {
             size="small"
             appearance={titleAppearance}
             padding="16px"
+            weight="bold"
           >
             {sectionValue.name}
           </Text>
@@ -213,6 +215,7 @@ const FullscreenMenu = (
           type="title"
           size="small"
           appearance={titleFullscreenNavAppearance}
+          weight="bold"
         >
           {navigation.title}
         </Text>
@@ -237,6 +240,7 @@ const FullscreenMenu = (
           type="label"
           size="medium"
           appearance={fullscreenNavCopyrightAppearance}
+          weight="bold"
         >
           ©2023 - Inube
         </Text>
