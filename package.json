@@ -44,7 +44,7 @@
     "@inubekit/grid": "^2.3.0",
     "@inubekit/icon": "^2.9.0",
     "@inubekit/nav": "^4.6.0",
-    "@inubekit/stack": "^3.2.1",
+    "@inubekit/stack": "^3.3.0",
     "@inubekit/text": "^2.10.0"
   },
   "peerDependencies": {
