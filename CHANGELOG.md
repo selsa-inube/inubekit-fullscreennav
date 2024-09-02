@@ -1,3 +1,16 @@
+# v2.25.0 (Mon Sep 02 2024)
+
+#### 🚀 Enhancement
+
+- Auto-merge PR [#35](https://github.com/selsa-inube/inubekit-fullscreennav/pull/35) ([@cmarin001](https://github.com/cmarin001))
+- Auto-merge PR [#34](https://github.com/selsa-inube/inubekit-fullscreennav/pull/34) ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v2.24.0 (Mon Sep 02 2024)
 
 #### 🚀 Enhancement
