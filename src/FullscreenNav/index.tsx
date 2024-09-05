@@ -23,6 +23,7 @@ import {
   StyledDetails,
   StyledSummary,
   StyledFooter,
+  StyledFooterLogoImage,
 } from "./styles";
 
 interface IFNavSection {
@@ -44,6 +45,8 @@ interface IFNav {
   navigation: IFNavigation;
   logoutPath: string;
   logoutTitle: string;
+  footerLabel?: string;
+  footerLogo?: string;
 }
 
 const MultiSections = ({ navigation }: IFNav) => {
@@ -193,7 +196,14 @@ const sectionsComponents: {
 const FullscreenMenu = (
   props: Omit<IFNav, "portalId"> & { onClose: () => void },
 ) => {
-  const { navigation, logoutTitle, logoutPath, onClose } = props;
+  const {
+    navigation,
+    logoutTitle,
+    logoutPath,
+    onClose,
+    footerLabel = "©2024 - Inube",
+    footerLogo,
+  } = props;
   const theme: typeof inube = useContext(ThemeContext);
   const titleFullscreenNavAppearance =
     (theme?.fullscreenNav?.title?.appearance as ITextAppearance) ||
@@ -236,21 +246,34 @@ const FullscreenMenu = (
         path={logoutPath}
       />
       <StyledFooter>
-        <Text
-          type="label"
-          size="medium"
-          appearance={fullscreenNavCopyrightAppearance}
-          weight="bold"
-        >
-          ©2023 - Inube
-        </Text>
+        <Stack justifyContent="center" alignItems="center">
+          {footerLogo ? (
+            <StyledFooterLogoImage src={footerLogo} alt="" />
+          ) : (
+            <Text
+              type="label"
+              size="medium"
+              appearance={fullscreenNavCopyrightAppearance}
+              weight="bold"
+            >
+              {footerLabel}
+            </Text>
+          )}
+        </Stack>
       </StyledFooter>
     </StyledFullscreenNav>
   );
 };
 
 const FullscreenNav = (props: IFNav) => {
-  const { portalId, navigation, logoutTitle, logoutPath } = props;
+  const {
+    portalId,
+    navigation,
+    logoutTitle,
+    logoutPath,
+    footerLabel,
+    footerLogo,
+  } = props;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const theme: typeof inube = useContext(ThemeContext);
   const fullscreenNavBurgerIconAppearance =
@@ -281,6 +304,8 @@ const FullscreenNav = (props: IFNav) => {
             navigation={navigation}
             logoutPath={logoutPath}
             logoutTitle={logoutTitle}
+            footerLabel={footerLabel}
+            footerLogo={footerLogo}
             onClose={() => setIsMenuOpen(false)}
           />,
           node,
