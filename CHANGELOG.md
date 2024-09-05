@@ -1,3 +1,15 @@
+# v2.33.0 (Thu Sep 05 2024)
+
+#### 🚀 Enhancement
+
+- Extend `<FullscreenNav />` Component to Include `footerLogo` Prop [#45](https://github.com/selsa-inube/inubekit-fullscreennav/pull/45) ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v2.32.0 (Wed Sep 04 2024)
 
 #### 🚀 Enhancement
