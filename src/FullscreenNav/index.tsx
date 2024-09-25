@@ -15,7 +15,6 @@ import { Stack } from "@inubekit/stack";
 import { NavLink, INavLink } from "@inubekit/nav";
 import { useContext } from "react";
 import { ThemeContext } from "styled-components";
-import { inube } from "@inubekit/foundations";
 import {
   StyledContDropMenu,
   StyledFullscreenNav,
@@ -25,6 +24,7 @@ import {
   StyledFooter,
   StyledFooterLogoImage,
 } from "./styles";
+import { tokens } from "./Tokens/tokens";
 
 interface IFNavSection {
   name: string;
@@ -51,13 +51,13 @@ interface IFNav {
 
 const MultiSections = ({ navigation }: IFNav) => {
   const sections = Object.keys(navigation.sections);
-  const theme: typeof inube = useContext(ThemeContext);
+  const theme = useContext(ThemeContext) as { fullscreenNav: typeof tokens };
   const selectedNavLinkAppearance =
     (theme?.fullscreenNav?.link?.appearance?.selected as IIconAppearance) ||
-    inube.fullscreenNav.link.appearance.selected;
+    tokens.link.appearance.selected;
   const regularNavLinkAppearance =
     (theme?.fullscreenNav?.link?.appearance?.regular as IIconAppearance) ||
-    inube.fullscreenNav.link.appearance.regular;
+    tokens.link.appearance.regular;
   const [openSection, setOpenSection] = useState<string | null>(null);
 
   const toggleSection = (section: string) => {
@@ -131,10 +131,10 @@ const MultiSections = ({ navigation }: IFNav) => {
 
 const TwoSections = ({ navigation }: IFNavMenuSection) => {
   const navigationSectionValues = Object.values(navigation.sections);
-  const theme: typeof inube = useContext(ThemeContext);
+  const theme = useContext(ThemeContext) as { fullscreenNav: typeof tokens };
   const titleAppearance =
     (theme?.fullscreenNav?.title?.appearance as ITextAppearance) ||
-    inube.fullscreenNav.title.appearance;
+    tokens.title.appearance;
   return (
     <Stack direction="column">
       {navigationSectionValues.map((sectionValue) => (
@@ -204,16 +204,16 @@ const FullscreenMenu = (
     footerLabel = "©2024 - Inube",
     footerLogo,
   } = props;
-  const theme: typeof inube = useContext(ThemeContext);
+  const theme = useContext(ThemeContext) as { fullscreenNav: typeof tokens };
   const titleFullscreenNavAppearance =
     (theme?.fullscreenNav?.title?.appearance as ITextAppearance) ||
-    inube.fullscreenNav.title.appearance;
+    tokens.title.appearance;
   const fullscreenNavCopyrightAppearance =
     (theme?.fullscreenNav?.copyright?.appearance as ITextAppearance) ||
-    inube.fullscreenNav.copyright.appearance;
+    tokens.copyright.appearance;
   const fullscreenNavCloseIconAppearance =
     (theme?.fullscreenNav?.burger?.appearance as IIconAppearance) ||
-    inube.fullscreenNav.burger.appearance;
+    tokens.burger.appearance;
   const sections = Object.keys(navigation.sections);
   const SectionComponent =
     sectionsComponents[sections.length] || sectionsComponents.default;
@@ -275,10 +275,10 @@ const FullscreenNav = (props: IFNav) => {
     footerLogo,
   } = props;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const theme: typeof inube = useContext(ThemeContext);
+  const theme = useContext(ThemeContext) as { fullscreenNav: typeof tokens };
   const fullscreenNavBurgerIconAppearance =
     (theme?.fullscreenNav?.burger?.appearance as IIconAppearance) ||
-    inube.fullscreenNav.burger.appearance;
+    tokens.burger.appearance;
   const node = document.getElementById(portalId);
 
   if (node === null) {
