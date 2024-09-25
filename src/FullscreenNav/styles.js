@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { inube } from "@inubekit/foundations";
+import { tokens } from "./Tokens/tokens";
 
 const StyledContDropMenu = styled.div`
   position: absolute;
@@ -18,8 +18,7 @@ const StyledFullscreenNav = styled.nav`
   bottom: 0;
   left: 0;
   background-color: ${({ theme }) =>
-    theme?.fullscreenNav?.background?.color ||
-    inube.fullscreenNav.background.color};
+    theme?.fullscreenNav?.background?.color || tokens.background.color};
   padding: 0px 16px;
   z-index: 2;
   overflow-y: auto;
@@ -32,7 +31,7 @@ const StyledSeparatorLine = styled.div`
   margin: 16px 16px 16px;
   height: 1px;
   background-color: ${({ theme }) =>
-    theme?.fullscreenNav?.divider?.color || inube.fullscreenNav.divider.color};
+    theme?.fullscreenNav?.divider?.color || tokens.divider.color};
 `;
 
 const StyledFooter = styled.footer`
@@ -59,8 +58,7 @@ const StyledSummary = styled.summary`
   &:hover {
     cursor: pointer;
     background-color: ${({ theme }) =>
-      theme?.fullscreenNav?.background?.color ||
-      inube.fullscreenNav.background.color};
+      theme?.fullscreenNav?.background?.color || tokens.background.color};
   }
 `;
 
