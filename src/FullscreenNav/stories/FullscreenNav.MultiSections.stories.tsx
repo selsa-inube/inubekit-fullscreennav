@@ -11,6 +11,7 @@ import {
   MdAutorenew,
   MdPriceChange,
   MdSecurityUpdateGood,
+  MdLogout,
 } from "react-icons/md";
 
 import { FullscreenNav, IFNav } from "..";
@@ -126,8 +127,20 @@ Multisections.args = {
       },
     },
   },
-  logoutPath: "/logout",
-  logoutTitle: "logout",
+  actions: [
+    {
+      id: "action1",
+      label: "Action 1",
+      icon: <MdLogout />,
+      action: () => console.log("Action 1 triggered"),
+    },
+    {
+      id: "action2",
+      label: "Action 2",
+      icon: <MdLogout />,
+      action: () => console.log("Action 2 triggered"),
+    },
+  ],
 };
 
 export default story;

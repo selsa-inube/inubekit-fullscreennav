@@ -24,6 +24,9 @@ const StyledFullscreenNav = styled.nav`
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
+  & > li {
+    cursor: pointer;
+  }
 `;
 
 const StyledSeparatorLine = styled.div`
