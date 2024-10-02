@@ -3,7 +3,6 @@ import { createPortal } from "react-dom";
 import {
   MdMenu,
   MdClose,
-  MdLogout,
   MdOutlineArrowDropDown,
   MdOutlineArrowDropUp,
 } from "react-icons/md";
@@ -12,7 +11,7 @@ import { Icon, IIconAppearance } from "@inubekit/icon";
 import { ITextAppearance, Text } from "@inubekit/text";
 import { Grid } from "@inubekit/grid";
 import { Stack } from "@inubekit/stack";
-import { NavLink, INavLink } from "@inubekit/nav";
+import { NavLink, INavLink, INavAction } from "@inubekit/nav";
 import { useContext } from "react";
 import { ThemeContext } from "styled-components";
 import {
@@ -43,8 +42,7 @@ interface IFNavigation {
 interface IFNav {
   portalId: string;
   navigation: IFNavigation;
-  logoutPath: string;
-  logoutTitle: string;
+  actions?: INavAction[];
   footerLabel?: string;
   footerLogo?: string;
 }
@@ -117,7 +115,7 @@ const MultiSections = ({ navigation }: IFNav) => {
                     label={linkValue.label}
                     icon={linkValue.icon}
                     path={linkValue.path}
-                    onClick={(e: PointerEvent) => e.stopPropagation()}
+                    onClick={(e) => e.stopPropagation()}
                   />
                 ),
               )}
@@ -198,8 +196,7 @@ const FullscreenMenu = (
 ) => {
   const {
     navigation,
-    logoutTitle,
-    logoutPath,
+    actions,
     onClose,
     footerLabel = "©2024 - Inube",
     footerLogo,
@@ -239,12 +236,19 @@ const FullscreenMenu = (
       </Grid>
       <SectionComponent navigation={navigation} />
       <StyledSeparatorLine />
-      <NavLink
-        id="logoutPath"
-        label={logoutTitle}
-        icon={<MdLogout />}
-        path={logoutPath}
-      />
+      {actions && actions.length > 0 && (
+        <>
+          {actions.map(({ id, label, icon, action }) => (
+            <NavLink
+              key={id}
+              id={id}
+              label={label}
+              icon={icon}
+              onClick={action}
+            />
+          ))}
+        </>
+      )}
       <StyledFooter>
         <Stack justifyContent="center" alignItems="center">
           {footerLogo ? (
@@ -266,14 +270,7 @@ const FullscreenMenu = (
 };
 
 const FullscreenNav = (props: IFNav) => {
-  const {
-    portalId,
-    navigation,
-    logoutTitle,
-    logoutPath,
-    footerLabel,
-    footerLogo,
-  } = props;
+  const { portalId, navigation, actions, footerLabel, footerLogo } = props;
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const theme = useContext(ThemeContext) as { fullscreenNav: typeof tokens };
   const fullscreenNavBurgerIconAppearance =
@@ -302,8 +299,7 @@ const FullscreenNav = (props: IFNav) => {
         createPortal(
           <FullscreenMenu
             navigation={navigation}
-            logoutPath={logoutPath}
-            logoutTitle={logoutTitle}
+            actions={actions}
             footerLabel={footerLabel}
             footerLogo={footerLogo}
             onClose={() => setIsMenuOpen(false)}
