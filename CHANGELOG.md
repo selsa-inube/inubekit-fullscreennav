@@ -1,3 +1,15 @@
+# v3.0.0 (Wed Oct 02 2024)
+
+#### 💥 Breaking Change
+
+- Refactor FullscreenNav to replace logout props with actions prop [#53](https://github.com/selsa-inube/inubekit-fullscreennav/pull/53) ([@cmarin001](https://github.com/cmarin001))
+
+#### Authors: 1
+
+- Cesar Marin Alfonso ([@cmarin001](https://github.com/cmarin001))
+
+---
+
 # v2.40.0 (Tue Oct 01 2024)
 
 #### 🚀 Enhancement
