@@ -5,3 +5,4 @@ export type {
   IFNavSection,
   IFNavMenuSection,
 } from "./FullscreenNav";
+export { tokens as FullscreenNavTokens } from "./FullscreenNav/Tokens/tokens";
